@@ -21,7 +21,7 @@ runs:
     - name: Pokreni skriptu
       id: run-script
       run: |
-        chmod +x ./entrypoint.sh
+        chmod +x entrypoint.sh
         ./entrypoint.sh "${{ inputs.message }}"
       shell: bash
 
