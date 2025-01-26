@@ -1,0 +1,26 @@
+name: "Custom Greeting Action"
+description: "Ova akcija prikazuje poruku dobrodošlice korisnicima"
+
+inputs:
+  name:
+    description: "Ime korisnika"
+    required: true
+  greeting:
+    description: "Poruka dobrodošlice"
+    required: false
+    default: "Zdravo"
+
+outputs:
+  message:
+    description: "Generisana poruka"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.name }}
+    - ${{ inputs.greeting }}
+
+branding:
+  icon: "smile"
+  color: "blue"
