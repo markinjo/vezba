@@ -1,7 +1,5 @@
-#!/bin/sh -l
+#!/bin/bash
 
-NAME=$1
-GREETING=$2
-
-echo "Dobrodošao/la, $NAME!"
-echo "message=$GREETING, $NAME!" >> $GITHUB_OUTPUT
+MESSAGE=$1
+echo "Dobijena poruka: $MESSAGE"
+echo "Script execution completed successfully."
