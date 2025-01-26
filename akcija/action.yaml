@@ -1,25 +1,33 @@
-name: "Custom Greeting Action"
-description: "Ova akcija prikazuje poruku dobrodošlice korisnicima"
+name: "Custom Composite Action"
+description: "Akcija za automatsko preuzimanje koda i izvršavanje skripte"
+author: "Marko"
 
 inputs:
-  name:
-    description: "Ime korisnika"
+  message:
+    description: "Poruka za ispisivanje"
     required: true
-  greeting:
-    description: "Poruka dobrodošlice"
-    required: false
-    default: "Zdravo"
 
 outputs:
-  message:
-    description: "Generisana poruka"
+  result:
+    description: "Rezultat izvršenja skripte"
+    value: ${{ steps.run-script.outputs.result }}
 
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.name }}
-    - ${{ inputs.greeting }}
+  using: "composite"
+  steps:
+    - name: Checkout koda
+      uses: actions/checkout@v4
+
+    - name: Pokreni skriptu
+      id: run-script
+      run: |
+        chmod +x script.sh
+        ./script.sh "${{ inputs.message }}"
+      shell: bash
+
+    - name: Postavi izlaznu vrednost
+      run: echo "result=Script executed successfully" >> $GITHUB_OUTPUT
+      shell: bash
 
 branding:
   icon: "smile"
