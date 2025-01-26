@@ -17,7 +17,9 @@ runs:
   steps:
     - name: Checkout koda
       uses: actions/checkout@v4
-
+    - name: Fajlovi provera
+      run: ls -R
+      shell: bash
     - name: Pokreni skriptu
       id: run-script
       run: |
