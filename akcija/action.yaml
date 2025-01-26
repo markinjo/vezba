@@ -21,8 +21,8 @@ runs:
     - name: Pokreni skriptu
       id: run-script
       run: |
-        chmod +x akcija/entrypoint.sh
-        ./script.sh "${{ inputs.message }}"
+        chmod +x entrypoint.sh
+        ./entrypoint.sh "${{ inputs.message }}"
       shell: bash
 
     - name: Postavi izlaznu vrednost
