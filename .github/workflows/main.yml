@@ -15,4 +15,4 @@ jobs:
           message: "Pozdrav od GitHub Actions"
       
       - name: Prikaz izlaza
-        run: echo "Rezultat akcije: ${{ steps.run-script.outputs.result }}"
+        run: echo "Rezultat akcije ${{ steps.run-script.outputs.result }}"
